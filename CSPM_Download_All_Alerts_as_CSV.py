@@ -41,7 +41,7 @@ login_headers = {
 auth_token = requests.request("POST", login_url, headers=login_headers, data=login_payload)
 token = auth_token.json()["token"]
 
-### Submit an Alert CSV doiwnload job:
+### Submit an Alert CSV download job:
 
 cspm_request = f"https://{CSPMApi}.prismacloud.io/alert/csv"
 
@@ -55,7 +55,7 @@ cspm_request_headers = {
 response_cspm = requests.request("POST", cspm_request, headers=cspm_request_headers, data=cspm_request_payload)
 response_cspm_id = response_cspm.json()['id']
 
-### For troubleshouting
+### For troubleshooting
 print(response_cspm.text)
 print(response_cspm_id)
 
@@ -73,5 +73,5 @@ cspm_request_headers_csv = {
 
 response_cspm_csv = requests.request("GET", cspm_request_csv, headers=cspm_request_headers_csv, data=cspm_request_payload_csv)
 
-### For troubleshouting
+### For troubleshooting
 print(response_cspm_csv.text)
