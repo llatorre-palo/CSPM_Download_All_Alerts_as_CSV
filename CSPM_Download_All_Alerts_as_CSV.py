@@ -7,7 +7,7 @@ import time
 ### Prisma Cloud Professional Services
 ### Created on December 4, 2023
 ### Created by llatorre@paloaltonetworks.com
-### Version: 2023.12.14.A
+### Version: 2023.12.15.B
 
 """
 API(s):
@@ -56,8 +56,8 @@ response_cspm = requests.request("POST", cspm_request, headers=cspm_request_head
 response_cspm_id = response_cspm.json()['id']
 
 ### For troubleshooting
-print(response_cspm.text)
-print(response_cspm_id)
+#print(response_cspm.text)
+#print(response_cspm_id)
 
 ### Wait for 3 minutes
 time.sleep(180)
@@ -74,4 +74,8 @@ cspm_request_headers_csv = {
 response_cspm_csv = requests.request("GET", cspm_request_csv, headers=cspm_request_headers_csv, data=cspm_request_payload_csv)
 
 ### For troubleshooting
-print(response_cspm_csv.text)
+#print(response_cspm_csv.text)
+
+### Create a new CSV file  
+with open("All_Critical_Alerts.csv", "w") as f:
+    f.write(response_cspm_csv.text)
