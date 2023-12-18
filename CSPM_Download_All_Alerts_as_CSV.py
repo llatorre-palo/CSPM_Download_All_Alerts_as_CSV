@@ -7,7 +7,7 @@ import time
 ### Prisma Cloud Professional Services
 ### Created on December 4, 2023
 ### Created by llatorre@paloaltonetworks.com
-### Version: 2023.12.15.B
+### Version: 2023.12.18.A
 
 """
 API(s):
@@ -79,3 +79,7 @@ response_cspm_csv = requests.request("GET", cspm_request_csv, headers=cspm_reque
 ### Create a new CSV file  
 with open("All_Critical_Alerts.csv", "w") as f:
     f.write(response_cspm_csv.text)
+
+#### from the CSV to excel
+csv_to_pdf = pd.read_csv("All_Critical_Alerts.csv")
+csv_to_pdf.to_excel("All_Critical_Alerts.xlsx", sheet_name="ALerts", index=False)
